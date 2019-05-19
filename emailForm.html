@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <style>
+      label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+	vertical-align: top;
+      }
+      input, select, textarea {
+        display: inline-block;
+        box-sizing: border-box;
+	width: 500px;
+      }
+      input.commit {
+        width: auto;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <form id = "emailform" action="sendingemail" method="post" enctype="multipart/form-data">
+      <label>From:
+      </label>
+      <select name = "from">
+        <option value="shibin.fan@gmail.com">shibin.fan@gmail.com</option>
+        <option value="fshibin@hotmail.com">fshibin@hotmail.com</option>
+      </select>
+      <br>
+      <label>Password:
+      </label>
+      <input type="password" name="password">
+      <br>
+      <label>To:
+      </label>
+      <input type="text" name="to">
+      <br>
+      <label>Subject:
+      </label>
+      <input type="text" name="subject">
+      <br>
+      <label>Content:
+      </label>
+      <textarea rows="4" cols="50" name="content" form="emailform"></textarea>
+      <br>
+      <input type="submit" value="Send" class="commit">
+    </form>
+  </body>
+</html>
