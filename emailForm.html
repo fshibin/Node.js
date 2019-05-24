@@ -14,36 +14,39 @@
       }
       input.commit {
         width: auto;
-        float: left;
+	float: left;
+        width: 80px;
+      }
+      input.inputToLeft {
+        width: auto;
       }
     </style>
   </head>
   <body>
     <form id = "emailform" action="sendingemail" method="post" enctype="multipart/form-data">
-      <label>From:
-      </label>
+      <label>From:</label>
       <select name = "from">
         <option value="shibin.fan@gmail.com">shibin.fan@gmail.com</option>
         <option value="fshibin@hotmail.com">fshibin@hotmail.com</option>
       </select>
       <br>
-      <label>Password:
-      </label>
+      <label>Password:</label>
       <input type="password" name="password">
       <br>
-      <label>To:
-      </label>
-      <input type="text" name="to">
+      <label>To:</label>
+      <input type="text" name="to" placeholder="Use comma to separate multiple recipients.">
       <br>
-      <label>Subject:
-      </label>
+      <label>Subject:</label>
       <input type="text" name="subject">
       <br>
-      <label>Content:
-      </label>
+      <label>Content:</label>
       <textarea rows="4" cols="50" name="content" form="emailform"></textarea>
       <br>
-      <input type="submit" value="Send" class="commit">
+      <label>Format:</label>
+      <input type="radio" name="format" value="text" class="inputToLeft" checked>Text
+      <input type="radio" name="format" value="text" class="inputToLeft">HTML
+      <br>
+      <input type="submit" value="Send Me!" class="commit">
     </form>
   </body>
 </html>
