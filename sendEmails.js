@@ -60,6 +60,27 @@ https.createServer(httpsOptions, function (req, res) {
       res.write(data);
       res.end();
     });
+  } else if (req.url.toLowerCase() == '/uploadfile' && req.method.toLowerCase() == 'get') {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<form action="uploadingfile" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br>');
+    res.write('<input type="submit">');
+    res.write('</form>');
+    return res.end();
+  } else if (req.url.toLowerCase() == '/uploadingfile' && req.method.toLowerCase() == 'post') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var oldpath = files.filetoupload.path;
+      var newpath = 'C:/Users/Node.js/uploaded_files/' + decodeURIComponent(files.filetoupload.name);
+      console.log('name =' + files.filetoupload.name);
+      console.log('old pat=' + oldpath);
+      console.log('new pat=' + newpath);
+      fs.rename(oldpath, newpath, function(err) {
+        if (err) throw err;
+        res.write('File uploaded and moved!');
+        res.end();
+      });
+    });
   } else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
     res.write('Sorry, we can\'t find the page you\'re looking for!');
